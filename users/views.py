@@ -139,21 +139,24 @@ def results(request, question_id):
 
 # Vote for a question choice
 def vote(request, question_id):
-    # print(request.POST['choice'])
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'users/index.html', {
-            'error_message': "You didn't select a choice.",
-        })
+    if request.user.is_authenticated:
+        # print(request.POST['choice'])
+        question = get_object_or_404(Question, pk=question_id)
+        try:
+            selected_choice = question.choice_set.get(pk=request.POST['choice'])
+        except (KeyError, Choice.DoesNotExist):
+            # Redisplay the question voting form.
+            return render(request, 'users/index.html', {
+                'error_message': "You didn't select a choice.",
+            })
+        else:
+            selected_choice.votes += 1
+            selected_choice.save()
+            # Always return an HttpResponseRedirect after successfully dealing
+            # with POST data. This prevents data from being posted twice if a
+            # user hits the Back button.
+            return HttpResponseRedirect(reverse('users:results', args=(question.sno,)))
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('users:results', args=(question.sno,)))
-
+        messages.warning(request, "Login First")
+    return redirect('users:index')
 
