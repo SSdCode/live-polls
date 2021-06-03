@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block title %} Public Polls {% endblock %}
+{% for message in messages  %}  {% endfor %} 
+{% block content %} 
+<h1 class="text-center mt-5">Log in</h1>
+<div class="container px-5">
+    <form method="POST" action="{% url 'users:login' %}" class="border rounded border-secondary p-5 m-5">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="loginusername">Username</label>
+          <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter username "required>
+        </div>
+        <div class="form-group">
+          <label for="loginpassword">Password</label>
+          <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter password "required>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="showPasswordCheck">
+          <label class="form-check-label" for="exampleCheck1">Show Password</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+</div>
+{% endblock %}
+
