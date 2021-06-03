@@ -64,8 +64,8 @@ def signup(request):
             return redirect('users:signup')
 
         if (pass1!= pass2):
-             messages.warning(request, " Passwords do not match")
-             return redirect('users:signup')
+            messages.warning(request, " Passwords do not match")
+            return redirect('users:signup')
 
 
         # Create the user
@@ -82,36 +82,42 @@ def signup(request):
     
 def postpoll(request):
     if request.method == "POST":
-        user=request.user
-        question_text = request.POST.get('question_text')
-        # livestatus = request.POST.get('livestatus')
-        livestatus = request.POST.get('livestatus', '') == 'on'
-        publicstatus = request.POST.get('publicstatus')
-         
-        option1 = request.POST.get('option1')
-        option2 = request.POST.get('option2')
-        option3 = request.POST.get('option3')
-        option4 = request.POST.get('option4')
+        if request.user.is_authenticated:
+            user=request.user
+            question_text = request.POST.get('question_text')
+            # livestatus = request.POST.get('livestatus')
+            livestatus = request.POST.get('livestatus', '') == 'on'
+            publicstatus = request.POST.get('publicstatus')
+            
+            option1 = request.POST.get('option1')
+            option2 = request.POST.get('option2')
+            option3 = request.POST.get('option3')
+            option4 = request.POST.get('option4')
 
- 
-        poll=Question(question_text= question_text, livestatus=livestatus, publicstatus=publicstatus, user=user)
-        poll.save()
-        pollchoice1=Choice(question = poll, choice_text = option1, votes=0)
-        pollchoice1.save()
-        pollchoice2=Choice(question = poll, choice_text = option2, votes=0)
-        pollchoice2.save()
-        pollchoice3=Choice(question = poll, choice_text = option3, votes=0)
-        pollchoice3.save()
-        pollchoice4=Choice(question = poll, choice_text = option4, votes=0)
-        pollchoice4.save()
-        messages.success(request, "Your Poll has been published successfully")
-        
+    
+            poll=Question(question_text= question_text, livestatus=livestatus, publicstatus=publicstatus, user=user)
+            poll.save()
+            pollchoice1=Choice(question = poll, choice_text = option1, votes=0)
+            pollchoice1.save()
+            pollchoice2=Choice(question = poll, choice_text = option2, votes=0)
+            pollchoice2.save()
+            pollchoice3=Choice(question = poll, choice_text = option3, votes=0)
+            pollchoice3.save()
+            pollchoice4=Choice(question = poll, choice_text = option4, votes=0)
+            pollchoice4.save()
+            messages.success(request, "Your Poll has been published successfully")
+        else:
+            messages.warning(request, "Login First")
     return redirect('users:index')
 
 def mypolls(request):
-    latest_question_list = Question.objects.order_by('-timestamp')[:5]
-    context = {'latest_question_list': latest_question_list}
-    return render(request, 'users/mypolls.html', context)
+    if request.user.is_authenticated:
+        latest_question_list = Question.objects.order_by('-timestamp')[:5]
+        context = {'latest_question_list': latest_question_list}
+        return render(request, 'users/mypolls.html', context)
+    else:
+            messages.warning(request, "Login First")
+    return redirect('users:index')
 
 def publicpolls(request):
     latest_question_list = Question.objects.order_by('-timestamp')[:5]

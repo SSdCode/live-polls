@@ -12,8 +12,8 @@
 	</ul>
 
 	<a class="btn btn-secondary" href="{% url 'users:publicpolls' %}">Back To Polls</a>
-	<a class="btn btn-dark" href="{% url 'users:details' question.sno %}">Vote again?</a>
-	<a id="btn" class="btn btn-dark" href="{% url 'users:results' question.sno %}"">Refress Result</a>
+	<a class="btn btn-dark" href="{% url 'users:details' question.sno %}">Vote</a>
+	<a id="btn" class="d-none" href="{% url 'users:results' question.sno %}"">Refress Result</a>
 </div>
 {% endblock %}
 {% block script %}
