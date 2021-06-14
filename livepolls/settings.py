@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import sys
 from pathlib import Path
 import os
 import django_heroku
@@ -25,7 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a%2-)imv_&7#53qh_)=itffq@4l67yxk!#8stu)x%rhppmna+^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = []
 
