@@ -79,7 +79,7 @@ def signup(request):
 
     else:
         return render(request,'users/signup.html')
-    
+
 def postpoll(request):
     if request.method == "POST":
         if request.user.is_authenticated:
