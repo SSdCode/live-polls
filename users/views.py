@@ -74,7 +74,7 @@ def signup(request):
         myuser.last_name= lname
         myuser.gender=gender
         myuser.save()
-        messages.success(request, "Welcome" + fname, " Your account has been successfully created")
+        messages.success(request, " Your account has been successfully created. Login Now.")
         return redirect('users:index')
 
     else:
@@ -120,7 +120,8 @@ def mypolls(request):
     return redirect('users:index')
 
 def publicpolls(request):
-    latest_question_list = Question.objects.order_by('-timestamp')[:5]
+    # latest_question_list = Question.objects.order_by('-timestamp')[:5]
+    latest_question_list = Question.objects.all()
     context = {'latest_question_list': latest_question_list}
     return render(request, 'users/publicpolls.html', context)
 
@@ -132,10 +133,30 @@ def details(request, question_id):
         raise Http404("Question does not exist")
     return render(request, 'users/details.html', {'question': question})
 
+# # Get question and display results
+# def results(request, question_id):
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, 'users/results.html', {'question': question})
+
 # Get question and display results
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'users/results.html', {'question': question})
+    total = 0
+    for choice in question.choice_set.all():
+        total += choice.votes
+    
+    listchoice = []
+    for choice in question.choice_set.all():
+        listchoice.append(choice.choice_text)
+
+
+    if total != 0:
+        list1 = []
+        for choice in question.choice_set.all():
+            list1.append(((choice.votes)*100)/total)
+    else:
+        list1 = [0,0,0,0]
+    return render(request, 'users/results.html', {'question': question, 'list1': list1, 'listchoice': listchoice})
 
 # Vote for a question choice
 def vote(request, question_id):

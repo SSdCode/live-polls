@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-
+ 
 <h1 class="text-center mb-5">Create poll</h1>
 <div class="container">
     <form method="POST" action="{% url 'users:postpoll' %}" class="m-5 p-3 border rounded border-secondary">
@@ -50,7 +50,7 @@
           </div>
           
           <div class="form-group form-check-inline mx-5">
-            <input type="checkbox" class="form-check-input" id="livestatus" name="livestatus" checked>
+            <input type="checkbox" class="form-check-input d-none" id="livestatus" name="livestatus" checked>
             <label class="form-check-label font-weight-bold" for="livestatus">Live Poll</label>
          </div>
  

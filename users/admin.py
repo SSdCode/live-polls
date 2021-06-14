@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Question, Choice
 # Register your models here.
-
+ 
 admin.site.site_header = "LivePolls Admin"
 admin.site.site_title = "LivePolls Admin Area"
 admin.site.index_title = "Welcome to the LivePolls admin area"

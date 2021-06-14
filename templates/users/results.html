@@ -4,12 +4,32 @@
 	<h1 class="mb-5 text-center">{{ question.question_text }}</h1>
 
 	<ul class="list-group mb-5">
-		{% for choice in question.choice_set.all %}
-		<li class="list-group-item">
-			{{ choice.choice_text }}  <span class="badge badge-success float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
-		</li>
-		{% endfor %}
-	</ul>
+		
+			<li class="list-group-item">
+				{{ listchoice.0 }}  <span class="badge badge-success float-right">{{ list1.0 }} &nbsp % votes{{ listchoice.votes | pluralize }}</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: {{ list1.0 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				{{ listchoice.1 }}  <span class="badge badge-success float-right">{{ list1.1 }} &nbsp % votes{{ choice.votes | pluralize }}</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: {{ list1.1 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				{{ listchoice.2 }}  <span class="badge badge-success float-right">{{ list1.2 }} &nbsp % votes{{ choice.votes | pluralize }}</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: {{ list1.2 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				{{ listchoice.3 }}  <span class="badge badge-success float-right">{{ list1.3 }} &nbsp % votes{{ choice.votes | pluralize }}</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: {{ list1.3 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</li>
+	</ul>  
 
 	<a class="btn btn-secondary" href="{% url 'users:publicpolls' %}">Back To Polls</a>
 	<a class="btn btn-dark" href="{% url 'users:details' question.sno %}">Vote</a>
