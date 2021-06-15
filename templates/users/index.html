@@ -1,76 +1,81 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block title %} LivePolls {% endblock %}
 
-{% block content %} 
+{% block content %}
 
 
-<div class="container d-flex justify-content-center align-items-center my-5">
-    <div class="media bg-success p-4">
-        <div class="media-body">
-          <h5 class="mt-0">Congratulations...</h5>
-          <p>You got the best Polls site over the internet, so post your own poll today and enjoy.</p>
-        </div>
+<div class="container d-flex justify-content-center align-items-center my-5 ">
+  <div class="media bg-success p-4 border rounded border-secondary shadow-lg">
+    <div class="media-body">
+      <h5 class="mt-0 fontPangolin" style="font-size:30px;font-weight: 600;">Congratulations...</h5>
+      <p class="option fontPatrick" style="letter-spacing: 1px;" >You got the best Polls site over the internet, so post your own poll today and enjoy.</p>
     </div>
+  </div>
 </div>
- 
-<h1 class="text-center mb-5">Create poll</h1>
-<div class="container">
-    <form method="POST" action="{% url 'users:postpoll' %}" class="m-5 p-3 border rounded border-secondary">
-      {% csrf_token %}
-        <div class="form-group row">
-          <label for="question_text" class="col-sm-2 col-form-label font-weight-bold">Question</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" id="question_text" name="question_text" rows="3" required></textarea>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="option1" class="col-sm-2 col-form-label font-weight-bold">Option 1</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="option1" name="option1" required>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="option2" class="col-sm-2 col-form-label font-weight-bold">Option 2</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="option2" name="option2" required>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="option3" class="col-sm-2 col-form-label font-weight-bold">Option 3</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="option3" name="option3" required>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="option4" class="col-sm-2 col-form-label font-weight-bold">Option 4</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="option4" name="option4" required>
-            </div>
-          </div>
-          
-          <div class="form-group form-check-inline mx-5">
-            <input type="checkbox" class="form-check-input d-none" id="livestatus" name="livestatus" checked>
-            <label class="form-check-label font-weight-bold" for="livestatus">Live Poll</label>
-         </div>
- 
-          <div class="form-check-inline ml-5">
-            <input class="form-check-input" type="radio" name="publicstatus" id="publicstatus" value="private" checked>
-            <label class="form-check-label font-weight-bold" for="publicstatus">
-                Private
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <input class="form-check-input" type="radio" name="publicstatus" id="publicstatus" value="public">
-            <label class="form-check-label font-weight-bold" for="publicstatus">
-              public
-            </label>
-          </div>
 
-          <button type="submit" class="btn btn-primary mx-5 my-3">Submit</button>
-    </form>
+<h1 class="text-center mb-5 fontPangolin" style="font-size:50px;">Create poll</h1>
+<div class=" container">
+  <form method="POST" action="{% url 'users:postpoll' %}"
+    class="m-5 p-3 border rounded border-secondary bg-light shadow-lg fontPangolin">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="question_text" class="col-sm-2 col-form-label"
+        style="font-size:30px; font-weight: bold;">Question</label>
+      <div class="col-sm-10">
+        <textarea class="form-control fontPatrick option" style="font-weight:bolder;" id="question_text"
+          name="question_text" rows="3" required></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="option1" class="col-sm-2 col-form-label" style="font-size:25px;">Option 1</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control fontPatrick option" id="option1" name="option1" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="option2" class="col-sm-2 col-form-label" style="font-size:25px;">Option 2</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control fontPatrick option" style="font-size:20px;" id="option2" name="option2"
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="option3" class="col-sm-2 col-form-label" style="font-size:25px;">Option 3</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control fontPatrick option" style="font-size:20px;" id="option3" name="option3"
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="option4" class="col-sm-2 col-form-label" style="font-size:25px;">Option 4</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control fontPatrick option" style="font-size:20px;" id="option4" name="option4"
+          required>
+      </div>
+    </div>
+
+    <div class="form-group form-check-inline mx-5">
+      <input type="checkbox" class="form-check-input d-none" id="livestatus" name="livestatus" checked>
+      <label class="form-check-label font-weight-bold" for="livestatus">Live Poll</label>
+    </div>
+
+    <div class="form-check-inline ml-5">
+      <input class="form-check-input" type="radio" name="publicstatus" id="publicstatus" value="private" checked>
+      <label class="form-check-label font-weight-bold" for="publicstatus">
+        Private
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <input class="form-check-input" type="radio" name="publicstatus" id="publicstatus" value="public">
+      <label class="form-check-label font-weight-bold" for="publicstatus">
+        public
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mx-5 my-3 shadow">Submit</button>
+  </form>
 </div>
 
 
 {% endblock %}
-

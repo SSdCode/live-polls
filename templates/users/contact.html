@@ -3,38 +3,38 @@
 {% block title %} contact {% endblock %}
 
 {% block content %} 
-<div class="container">
-    <h1 class="display-4 font-italic mt-3 text-center">Get in touch</h1>
-    <form class="border rounded border-secondary mt-5 p-5">
+<div class="container border rounded border-secondary shadow-lg mt-5 fontPangolin">
+    <h1 class="display-4 font-italic mt-3 text-center" style="font-size:60px; font-weight:800;">Get in touch</h1>
+    <form class=" mb-5 p-5">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputFirstName">First Name</label>
-            <input type="text" class="form-control" id="inputFirstName">
+            <input type="text" class="form-control option" id="inputFirstName">
           </div>
           <div class="form-group col-md-6">
             <label for="inputLastName">last Name</label>
-            <input type="text" class="form-control" id="inputLastName">
+            <input type="text" class="form-control option" id="inputLastName">
           </div>
         </div>
         <div class="form-group">
           <label for="inputQuery">Enter your Query</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea class="form-control option" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputCity">
+            <input type="email" class="form-control option" id="inputCity">
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
+            <select id="inputState" class="form-control option">
               <option selected>Choose...</option>
-              <option>...</option>
+              <option>Gujrat</option>
             </select>
           </div>
           <div class="form-group col-md-2">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputZip">
+            <input type="text" class="form-control option" id="inputZip">
           </div>
         </div>
         <div class="form-group">
@@ -45,7 +45,7 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary shadow-lg">Submit</button>
       </form>
 </div>
 {% endblock %}

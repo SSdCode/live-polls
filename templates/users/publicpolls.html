@@ -9,15 +9,15 @@
 	<strong>{{ error_message }}</strong>
 </p>
 {% endif %}
-  <h1 class="text-center mb-3">Poll Questions</h1>
+  <h1 class="text-center my-3 fontPangolin" style="font-size:50px; font-weight: bolder;">Poll Questions</h1>
   {% if latest_question_list %}
     {% for question in latest_question_list %}
       {% if question.publicstatus ==  'public' %}
-        <div class="container mt-3 p-3 border rounded border-secondary">
+        <div class="container mt-3 p-3 border rounded border-secondary shadow-lg">
           <div class="card-body">
-            <h3 class="m-3">{{ question.question_text }}</h3>
-            <a href="{% url 'users:details' question.sno %}" class="btn btn-primary ml-3 mt-3">Vote Now</a>
-            <a href="{% url 'users:results' question.sno %}" class="btn btn-secondary mt-3">Results</a>
+            <h3 class="m-3 fontPangolin" style="font-size:40px; font-weight: 800;">{{ question.question_text }}</h3>
+            <a href="{% url 'users:details' question.sno %}" class="btn btn-primary ml-3 mt-3 shadow-lg">Vote Now</a>
+            <a href="{% url 'users:results' question.sno %}" class="btn btn-secondary mt-3 shadow-lg">Results</a>
           </div>
         </div>
       {% endif %}

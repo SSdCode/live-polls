@@ -3,25 +3,24 @@
 {% block title %} LivePolls {% endblock %}
 
 {% block content %} 
-<!-- <a class="btn btn-secondary btn-sm mb-3" href="{% url 'users:publicpolls' %}">Back To Polls</a> -->
-<h1 class="text-center mb-3 mt-5">Vote here</h1>
+<h1 class="text-center mb-3 mt-5 fontPangolin" style="font-size:50px;">Vote here</h1>
  
 {% if error_message %}
 <p class="alert alert-danger">
 	<strong>{{ error_message }}</strong>
 </p>
-{% endif %}
-<div class="container p-3 border rounded border-secondary">
+{% endif %} 
+<div class="container p-3 border rounded border-secondary shadow-lg">
 	<form action="{% url 'users:vote' question.sno %}" method="post">
 		{% csrf_token %} 
-		<h3 class="m-3">{{ question.question_text }}</h3>
-		{% for choice in question.choice_set.all %}
-			<div class="form-check">
+		<h3 class="m-3 fontPangolin" style="font-size:40px; font-weight: 800;">{{ question.question_text }}</h3>
+		{% for choice in question.choice_set.all %} 
+			<div class="form-check fontPatrick" style="font-size:25px; font-weight: 400; letter-spacing: 1px;">
 				<input type="radio"	name="choice" class="form-check-input ml-2" id="choice{{ forloop.counter }}" value="{{ choice.id }}"	required/>
-				<label class="ml-4" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+				<label class="ml-5" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
 			</div>
 		{% endfor %}
-		<input type="submit" value="Vote" class="btn btn-success btn-lg btn-block mt-4" />
+		<input type="submit" value="Vote" class="btn btn-success btn-lg btn-block mt-4 shadow-lg" />
 	</form>
 </div>
 {% endblock %}

@@ -3,18 +3,18 @@
 {% block title %} Public Polls {% endblock %}
 {% for message in messages  %}  {% endfor %} 
 {% block content %} 
-<h1 class="text-center mb-3">Sign Up Page</h1>
-<div class="container">
-    <form method="post" action="{% url 'users:signup' %}" class="m-5 p-3 border rounded border-secondary">
+<h1 class="text-center my-3 fontPangolin" style="font-size:40px; font-weight: 800;">Sign Up Here</h1>
+<div class="container fontPangolin">
+    <form method="post" action="{% url 'users:signup' %}" class="m-5 p-3 border rounded border-secondary  shadow-lg">
         {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" name="fname" required>
+                <input type="text" class="form-control option" id="fname" name="fname" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" name="lname" required>
+                <input type="text" class="form-control option" id="lname" name="lname" required>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="username">Unique User Name  (Alphanumeric)</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control option" id="username" name="username" required>
             </div>
             <div class="form-group col-md-6 my-2">
                 <div class="form-check form-check-inline">
@@ -44,20 +44,20 @@
 
         <div class="form-group my-2">
             <label for="useremail">Email address</label>
-            <input type="email" maxlength="35" class="form-control" id="useremail" name="email" required>
+            <input type="email" maxlength="35" class="form-control option" id="useremail" name="email" required>
 
         </div>
         <div class="form-group my-2">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="pass1" required>
+            <input type="password" class="form-control option" id="password" name="pass1" required>
         </div>
         <div class="form-group my-2">
             <label for="cpassword">Confirm Password</label>
-            <input type="password" class="form-control" id="cpassword" name="pass2" aria-describedby="passhelp" required>
+            <input type="password" class="form-control option" id="cpassword" name="pass2" aria-describedby="passhelp" required>
             <small id="passhelp" class="form-text text-muted">Make sure you enter same password.</small>
         </div>
 
-        <button type="submit" class="btn btn-primary">Signup</button>
+        <button type="submit" class="btn btn-primary shadow-lg">Signup</button>
     </form>
 </div>
 {% endblock %}
