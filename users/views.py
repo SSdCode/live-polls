@@ -6,10 +6,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth  import authenticate,  login as auth_login, logout
 
-
-
-# superuser - admin - admin
-# user - sdcode - 1234
+# user - samir - samir987
 
 # Create your views here.
 def index(request):
